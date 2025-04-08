@@ -3,4 +3,15 @@ body {
          and use the OS’s UI font as the website font
        */
     font: 100%/1.5 system-ui;
+    max-width: 100ch; /*helps with content width*/
+    margin-inline: max(1em, (100% - 100ch) / 2); /* helps with L&R margin */
+    /* margin-left: max(1em, (100% - 100ch) / 2); */
+    /* margin-right: max(1em, (100% - 100ch) / 2); */
+
+  }
+  nav {
+    display: flex
+  }
+  nav a {
+    flex: 1
   }
