@@ -61,23 +61,40 @@ button {
 
 /* Formatting projects page */
 .projects {
-  display: grid; /* Make the projects container a grid */
-  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Create a responsive grid */
-  gap: 1em; /* Add some gap between the project items */
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); 
+  gap: 1em; 
 }
 
 .projects article {
-  border: 1px solid #ccc; /* Add a subtle border around each project */
-  padding: 1em; /* Add some padding inside each project item */
+  border: 1px solid #ccc; 
+  padding: 1em; 
+  display: grid; 
+  grid-template-rows: subgrid; 
+  grid-row-gap: 1em; 
+  grid-row: span 3; 
 }
 
 .projects article img {
-  max-width: 100%; /* Make images responsive within their container */
+  max-width: 100%; 
   height: auto;
-  margin-bottom: 0.5em; /* Add some space below the image */
+  margin-bottom: 0; 
 }
 
 .projects article h2 {
-  margin-top: 0; /* Remove default top margin for the heading */
-  margin-bottom: 0.5em; /* Add some space below the heading */
+  margin: 0; 
+}
+
+.projects article p {
+  margin: 0; 
+}
+
+/* Resizing headers */
+h1 {
+  font-size: 400%; /* Make the main heading significantly larger */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1; /* Improve heading readability with tighter line spacing */
+  text-wrap: balance; /* Prevent unevenly short last lines in headings */
 }
