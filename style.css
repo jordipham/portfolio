@@ -2,6 +2,7 @@
   --color-accent: oklch(0.27 0.0802 251.65);
 }
 
+/* Centers the Content, Helps with Zoom/Resizing */
 body {
     /* Set line height to 1.5 times the font size
          and use the OS’s UI font as the website font
@@ -9,16 +10,17 @@ body {
     font: 100%/1.5 system-ui;
     max-width: 100ch; /*helps with content width*/
     margin-inline: max(1em, (100% - 100ch) / 2); /* helps with L&R margin */
-    /* margin-left: max(1em, (100% - 100ch) / 2); */
-    /* margin-right: max(1em, (100% - 100ch) / 2); */
 
   }
+
+  /* Navigation Menu */
   nav {
     display: flex;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: oklch(80% 3% 200);
-  }
+  } 
+
   nav a {
     flex: 1;
     text-decoration: none;
@@ -26,9 +28,33 @@ body {
     text-align: center;
     padding: .5em;
     margin-bottom: 1px;
-  }
+  } 
 
   nav a:hover {
     border-bottom: 0.4em solid var(--color-accent);
     background-color: oklch(from var(--color-accent) 95% 5% h);
-  }
+  } 
+
+/* Formatting the Contacts Page */
+form {
+  display: grid; /* grid container */
+  grid-template-columns: auto 1fr; /* defines columns */
+  gap: 1em; /* create space between columns and stuff */
+}
+
+label, 
+button {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: contents;
+}
+
+input, 
+textarea,
+button {
+  font: inherit;
+  width: 100%; 
+  box-sizing: border-box;
+}
