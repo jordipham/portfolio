@@ -58,3 +58,26 @@ button {
   width: 100%; 
   box-sizing: border-box;
 }
+
+/* Formatting projects page */
+.projects {
+  display: grid; /* Make the projects container a grid */
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Create a responsive grid */
+  gap: 1em; /* Add some gap between the project items */
+}
+
+.projects article {
+  border: 1px solid #ccc; /* Add a subtle border around each project */
+  padding: 1em; /* Add some padding inside each project item */
+}
+
+.projects article img {
+  max-width: 100%; /* Make images responsive within their container */
+  height: auto;
+  margin-bottom: 0.5em; /* Add some space below the image */
+}
+
+.projects article h2 {
+  margin-top: 0; /* Remove default top margin for the heading */
+  margin-bottom: 0.5em; /* Add some space below the heading */
+}
