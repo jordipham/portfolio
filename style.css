@@ -74,8 +74,8 @@ button {
 }
 
 .projects article {
-  border: 1px solid #ccc;
-  padding: 1em;
+  /* border: 1px solid #ccc;
+  padding: 1em; */
   display: grid;
   grid-template-rows: subgrid;
   grid-row-gap: 1em;
@@ -96,7 +96,7 @@ button {
   margin: 0;
 }
 
-/* Resizing headers */
+/* Resizing headers  and fixing line evenness*/
 h1 {
   font-size: 400%; /* Make the main heading significantly larger */
 }
@@ -107,7 +107,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Styling the Resume Page */
-
 #personal-info {
   text-align: center;
   margin-bottom: 2em;
