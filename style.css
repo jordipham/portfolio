@@ -1,3 +1,4 @@
+/* Color Property */
 :root {
   --color-accent: oklch(0.27 0.0802 251.65);
 }
@@ -97,4 +98,107 @@ h1 {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1; /* Improve heading readability with tighter line spacing */
   text-wrap: balance; /* Prevent unevenly short last lines in headings */
+}
+
+/* Styling the Resume Page */
+
+#personal-info {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+#personal-info h2 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+#personal-info p {
+  line-height: 1.6;
+  margin-bottom: 0.25em;
+}
+
+#personal-info a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+#personal-info a:hover {
+  text-decoration: underline;
+}
+
+#education,
+#experience,
+#projects,
+#skills {
+  margin-bottom: 2em;
+}
+
+#education h2,
+#experience h2,
+#projects h2,
+#skills h2 {
+  font-size: 1.75em;
+  margin-bottom: 0.5em;
+}
+
+#education hr,
+#experience hr,
+#projects hr,
+#skills hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin-bottom: 1em;
+}
+
+#education article,
+#experience article,
+#projects article,
+#skills article {
+  margin-bottom: 1.5em;
+}
+
+#education article header h3,
+#experience article header h3,
+#projects article header h3 {
+  font-size: 1.25em;
+  margin-bottom: 0.25em;
+}
+
+#education article header p,
+#experience article header p,
+#projects article header p {
+  color: #777;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+#education article ul,
+#experience article ul,
+#projects article ul,
+#skills article ul {
+  list-style: disc;
+  padding-left: 1.5em;
+}
+
+#education article li,
+#experience article li,
+#projects article li,
+#skills article li {
+  line-height: 1.6;
+  margin-bottom: 0.5em;
+}
+
+#skills article ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+  padding-left: 0;
+  list-style: none;
+}
+
+#skills article li {
+  background-color: #f0f0f0;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  margin-bottom: 0;
 }
