@@ -15,7 +15,7 @@ body {
   }
 
   /* Navigation Menu */
-  nav {
+nav {
     display: flex;
     border-bottom-width: 1px;
     border-bottom-style: solid;
@@ -23,7 +23,7 @@ body {
     margin-bottom: 1em; /* Added for Step 2.3 */
   }
 
-  nav a {
+nav a {
     flex: 1;
     text-decoration: none;
     color: inherit;
@@ -32,12 +32,12 @@ body {
     margin-bottom: 1px;
   }
 
-  nav a:hover {
+nav a:hover {
     border-bottom: 0.4em solid var(--color-accent);
     background-color: oklch(from var(--color-accent) 95% 5% h);
   }
 
-  nav a.current { /* Added for Step 2.3 */
+nav a.current { /* Added for Step 2.3 */
     border-bottom: 0.4em solid oklch(80% 3% 200); /* Or var(--color-accent) for a different look */
     padding-bottom: calc(0.5em - 0.4em); /* Reduce padding to counter border height */
   }
@@ -96,7 +96,7 @@ button {
   margin: 0;
 }
 
-/* Resizing headers  and fixing line evenness*/
+/* Resizing headers and fixing line evenness*/
 h1 {
   font-size: 400%; /* Make the main heading significantly larger */
 }
