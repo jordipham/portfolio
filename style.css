@@ -20,7 +20,7 @@ nav {
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: oklch(80% 3% 200);
-    margin-bottom: 1em; /* Added for Step 2.3 */
+    margin-bottom: 1em; 
   }
 
 nav a {
@@ -28,18 +28,20 @@ nav a {
     text-decoration: none;
     color: inherit;
     text-align: center;
-    padding: .5em;
+    padding: .4em;
     margin-bottom: 1px;
   }
 
 nav a:hover {
-    border-bottom: 0.4em solid var(--color-accent);
+    border-bottom: 0.4em;
+    border-bottom-color: var(--color-accent);
+    border-bottom-style: solid;
     background-color: oklch(from var(--color-accent) 95% 5% h);
   }
 
-nav a.current { /* Added for Step 2.3 */
+nav a.current { 
     border-bottom: 0.4em solid oklch(80% 3% 200); /* Or var(--color-accent) for a different look */
-    padding-bottom: calc(0.5em - 0.4em); /* Reduce padding to counter border height */
+    padding-bottom: 0.4em; /* Reduce padding to counter border height */
   }
 
 /* Formatting the Contacts Page */
