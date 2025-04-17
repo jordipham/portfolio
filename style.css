@@ -21,7 +21,6 @@ nav {
     border-bottom-style: solid;
     border-bottom-color: oklch(80% 3% 200);
     margin-bottom: 1em;
-    width: 100%;
   }
 
 nav a {
