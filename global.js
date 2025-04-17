@@ -36,20 +36,11 @@ document.body.prepend(nav);
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
-    let href;
 
-    if (!url.startsWith('http')) {
-        href = BASE_PATH + url;
-        if (!href.endsWith('/')) {
-            href += '/';
-        }
-        href += 'index.html';
-    } else {
-        href = url; // Keep absolute URLs as they are
-    }
+    url = !url.startsWith('http') ? BASE_PATH + url + 'index.html' : url;
 
     let targetAttribute = p.target ? ` target="${p.target}"` : '';
 
     // Create link and add it to nav
-    nav.insertAdjacentHTML('beforeend', `<a href="${href}"${targetAttribute}>${title}</a>`);
+    nav.insertAdjacentHTML('beforeend', `<a href="${url}"${targetAttribute}>${title}</a>`);
 }
