@@ -3,6 +3,11 @@
   --color-accent: oklch(0.27 0.0802 251.65);
 }
 
+/* Stabilize nav bar */
+html {
+  scrollbar-gutter: stable;
+}
+
 /* Centers the Content, Helps with Zoom/Resizing */
 body {
     /* Set line height to 1.5 times the font size
