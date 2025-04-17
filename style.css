@@ -6,6 +6,7 @@
 /* Stabilize nav bar */
 html {
   scrollbar-gutter: stable;
+  color-scheme: light dark; /* for dark light mode things */
 }
 
 /* Centers the Content, Helps with Zoom/Resizing */
@@ -21,10 +22,11 @@ body {
 
 /* Navigation Menu */
 nav {
+    --border-color: oklch(50% 10% 200 / 40%); /* Defined border color variable */
     display: flex;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: oklch(80% 3% 200);
+    border-bottom-color: var(--border-color); /* new color for nav bar that adapts better for light dark modes */
     margin-bottom: 1em;
   }
 
@@ -41,7 +43,7 @@ nav a:hover {
     border-bottom: 0.4em;
     border-bottom-color: var(--color-accent);
     border-bottom-style: solid;
-    background-color: oklch(from var(--color-accent) 95% 5% h);
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
     padding-bottom: 0;
   }
 
@@ -49,6 +51,22 @@ nav a.current {
     border-bottom: 0.4em solid oklch(80% 3% 200); 
     padding-bottom: 0.4em; 
   }
+
+ /* Light Dark Switch */
+ .color-scheme {
+  position: absolute; /* Take it out of normal flow */
+  top: 1rem;       /* Adjust vertical position as needed */
+  right: 1rem;      /* Adjust horizontal position as needed */
+  font-size: 80%;   /* Optional: Adjust font size */
+  display: flex;      /* To align label and select horizontally */
+  align-items: center; /* Vertically center the label and select */
+  gap: 0.5em;       /* Optional: Space between label and select */
+}
+
+.color-scheme select {
+  /* Optional: Style the select dropdown if needed */
+  font: inherit; /* Inherit font styles from the body */
+}
 
 /* Formatting the Contacts Page */
 form {

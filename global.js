@@ -51,12 +51,44 @@ for (let p of pages) {
     if (a.host === location.host && a.pathname === location.pathname) {
         a.classList.add('current');
     }
-    
+
     // Open external links in a new tab
     if (p.target === '_blank') {
         a.target = '_blank';
     }
-    
+
     // Append the <a> element to the <nav>
     nav.append(a);
+}
+
+// Step 4 - Light Dark Modes
+document.body.insertAdjacentHTML(
+    'afterbegin',
+    `
+        <div class="color-scheme">
+            <label for="theme-select">Theme:</label>
+            <select id="theme-select">
+                <option value="light dark">Automatic</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>`,
+  );
+
+const themeSelect = document.querySelector('#theme-select');
+
+function setColorScheme(scheme) {
+  document.documentElement.style.setProperty('color-scheme', scheme);
+  localStorage.setItem('colorScheme', scheme);
+}
+
+themeSelect.addEventListener('input', function(event) {
+  setColorScheme(event.target.value);
+});
+
+const storedColorScheme = localStorage.getItem('colorScheme');
+if (storedColorScheme) {
+  setColorScheme(storedColorScheme);
+  // Update the select dropdown to reflect the loaded preference
+  themeSelect.value = storedColorScheme;
 }
