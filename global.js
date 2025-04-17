@@ -42,5 +42,21 @@ for (let p of pages) {
     let targetAttribute = p.target ? ` target="${p.target}"` : '';
 
     // Create link and add it to nav
-    nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+    let a = document.createElement('a');
+    a.href = url;
+    a.textContent = title;
+    nav.append(a);
+
+    // Highlight the current page
+    if (a.host === location.host && a.pathname === location.pathname) {
+        a.classList.add('current');
+    }
+    
+    // Open external links in a new tab
+    if (p.target === '_blank') {
+        a.target = '_blank';
+    }
+    
+    // Append the <a> element to the <nav>
+    nav.append(a);
 }
