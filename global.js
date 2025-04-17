@@ -92,3 +92,25 @@ if (storedColorScheme) {
   // Update the select dropdown to reflect the loaded preference
   themeSelect.value = storedColorScheme;
 }
+
+// Step 5: Better contact form
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form'); // Using the variable name "form" as in the directions
+
+    form?.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const email = 'jop037@ucsd.edu';
+        const data = new FormData(form); // Using the variable name "data" as in the directions
+        let params = [];
+
+        for (let [name, value] of data) {
+            params.push(`${name}=${encodeURIComponent(value)}`);
+            console.log(name, value); // See what's being submitted (unencoded)
+            console.log(name, encodeURIComponent(value)); // See the encoded value
+        }
+
+        const url = `mailto:${email}?${params.join('&')}`; // Using the variable name "url" as in the directions
+        location.href = url; // Using location.href as in the directions
+    });
+});
