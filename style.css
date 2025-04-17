@@ -28,8 +28,9 @@ nav a {
     text-decoration: none;
     color: inherit;
     text-align: center;
-    padding: .4em;
+    padding: 0.4em;
     margin-bottom: 1px;
+    box-sizing: border-box;
   }
 
 nav a:hover {
@@ -37,11 +38,12 @@ nav a:hover {
     border-bottom-color: var(--color-accent);
     border-bottom-style: solid;
     background-color: oklch(from var(--color-accent) 95% 5% h);
+    padding-bottom: 0;
   }
 
 nav a.current { 
-    border-bottom: 0.4em solid oklch(80% 3% 200); /* Or var(--color-accent) for a different look */
-    padding-bottom: 0.4em; /* Reduce padding to counter border height */
+    border-bottom: 0.4em solid oklch(80% 3% 200); 
+    padding-bottom: 0.4em; 
   }
 
 /* Formatting the Contacts Page */
