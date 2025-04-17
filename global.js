@@ -20,7 +20,7 @@ function $$(selector, context = document) {
 // Step 3 Section - Lab 3
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
     ? "/"                  // Local server
-    : "/jordipham/";         // GitHub Pages repo name (CHANGE THIS IF NEEDED)
+    : "/portfolio/";         // GitHub Pages repo name (CHANGE THIS IF NEEDED)
 
 let pages = [
     { url: '', title: 'Home' },
