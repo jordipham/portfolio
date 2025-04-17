@@ -20,7 +20,7 @@ function $$(selector, context = document) {
 // Step 3 Section - Lab 3
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
     ? "/"                  // Local server
-    : "/portfolio/";         // GitHub Pages repo name (CHANGE THIS IF NEEDED)
+    : "/portfolio/";         // GitHub Pages repo name
 
 let pages = [
     { url: '', title: 'Home' },
@@ -42,5 +42,5 @@ for (let p of pages) {
     let targetAttribute = p.target ? ` target="${p.target}"` : '';
 
     // Create link and add it to nav
-    nav.insertAdjacentHTML('beforeend', `<a href="${url}"${targetAttribute}>${title}</a>`);
+    nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
 }
