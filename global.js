@@ -37,7 +37,7 @@ for (let p of pages) {
     let url = p.url;
     let title = p.title;
 
-    url = !url.startsWith('http') ? BASE_PATH + url + 'index.html' : url;
+    url = !url.startsWith('http') ? BASE_PATH + url : url;
 
     let targetAttribute = p.target ? ` target="${p.target}"` : '';
 
