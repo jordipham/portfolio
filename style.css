@@ -68,6 +68,12 @@ nav a.current {
   font: inherit; /* Inherit font styles from the body */
 }
 
+@media (max-width: 1350px) {
+  .color-scheme {
+    top: 4.5rem;
+  }
+}
+
 /* Formatting the Contacts Page */
 form {
   display: grid; /* grid container */
