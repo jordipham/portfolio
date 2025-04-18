@@ -1,6 +1,10 @@
 /* Color Property */
 :root {
   --color-accent: oklch(0.27 0.0802 251.65);
+  --link-color-light: blue;
+  --link-hover-color-light: orange;
+  --link-color-dark: lightskyblue;
+  --link-hover-color-dark: lightcoral;
 }
 
 /* Stabilize nav bar */
@@ -238,4 +242,50 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.5em 1em;
   border-radius: 5px;
   margin-bottom: 0;
+}
+
+/* Right Align - Left Align */
+.title_year {
+  float: right;
+}
+
+/* Dates in projects section of resume */
+.tech_year {
+    color: #777;
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 0.5em;
+    font-weight: normal; /* Set a normal font weight if paragraphs aren't bold */
+    /* Add any other paragraph-specific styles you want here, like line-height, color, etc. */
+    float: right;
+}
+
+/* Dealing with links on resume page */
+/* Link Styles for Personal Info Section with Dark Mode Support */
+#personal-info a {
+  color: var(--link-color-light); /* Default to light mode color */
+  text-decoration: none;
+}
+
+#personal-info a:hover {
+  color: var(--link-hover-color-light);
+  text-decoration: underline;
+}
+
+/* Dark mode link styles for about me header */
+@media (prefers-color-scheme: dark) {
+  #personal-info a {
+    color: var(--link-color-dark);
+  }
+
+  #personal-info a:hover {
+    color: var(--link-hover-color-dark);
+  }
+}
+
+/* Skills section readability in dark mode */
+@media (prefers-color-scheme: dark) {
+  #skills li {
+    color: #171717; /* Dark gray */
+  }
 }
