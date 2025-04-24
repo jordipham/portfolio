@@ -326,3 +326,41 @@ h1, h2, h3, h4, h5, h6 {
   height: auto; /* Maintain aspect ratio */
   object-fit: contain; /* Scale image down to fit within the container */
 }
+
+/* modifying github stats bar */
+#profile-stats {
+  margin-top: 20px;
+  padding: 15px;
+  /* border: 1px solid #eee; */
+  border-radius: 5px;
+  /* background-color: #f9f9f9; */
+}
+
+#profile-stats h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.45em;
+  color: #333;
+}
+
+.github-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Create four equal columns */
+  gap: 10px 20px; /* Row gap and column gap */
+}
+
+/* .stat-item {
+  
+} */
+
+.stat-label {
+  font-size: 1em;
+  color: #777;
+  margin-bottom: 5px;
+  text-transform: uppercase; /* Optional: Make labels uppercase */
+}
+
+.stat-value {
+  font-size: 1.75em;
+  color: #333;
+}

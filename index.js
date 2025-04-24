@@ -1,4 +1,5 @@
-import { fetchJSON, renderProjects } from './global.js';
+// first three projects to home page
+import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
 
 async function displayLatestProjects() {
   const projects = await fetchJSON('./lib/projects.json');
@@ -15,4 +16,43 @@ async function displayLatestProjects() {
   }
 }
 
-displayLatestProjects();
+// github stats
+async function displayGithubStats() {
+    const profileStats = document.querySelector('#profile-stats');
+    if (profileStats) {
+      try {
+        const githubData = await fetchGitHubData('jordipham');
+        profileStats.innerHTML = `
+          <h3>My GitHub Stats</h3>
+          <div class="github-stats-grid">
+              <div class="stat-item">
+                  <div class="stat-label">FOLLOWERS</div>
+                  <div class="stat-value">${githubData.followers}</div>
+              </div>
+              <div class="stat-item">
+                  <div class="stat-label">FOLLOWING</div>
+                  <div class="stat-value">${githubData.following}</div>
+              </div>
+              <div class="stat-item">
+                  <div class="stat-label">PUBLIC REPOS</div>
+                  <div class="stat-value">${githubData.public_repos}</div>
+              </div>
+              <div class="stat-item">
+                  <div class="stat-label">PUBLIC GISTS</div>
+                  <div class="stat-value">${githubData.public_gists}</div>
+              </div>
+          </div>
+        `;
+      } catch (error) {
+        console.error('Error fetching GitHub data:', error);
+        profileStats.innerHTML = `
+          <h3>My GitHub Stats</h3>
+          <p class="error">Failed to load GitHub stats.</p>
+        `;
+      }
+    }
+  }
+
+
+  displayLatestProjects();
+  displayGithubStats();
