@@ -120,40 +120,65 @@ export async function fetchJSON(url) {
     try {
       // Fetch the JSON file from the given URL
       const response = await fetch(url);
-    //   console.log(response) // debug purposes
+  
+      // 2. Handling Errors
       if (!response.ok) {
         throw new Error(`Failed to fetch projects: ${response.statusText}`);
       }
+  
+      console.log(response); // Inspect the response in dev tools
+  
+      // 3. Parsing the Data
       const data = await response.json();
       return data;
+  
     } catch (error) {
       console.error('Error fetching or parsing JSON data:', error);
     }
   }
 
   // Step 1.4 for Lab 4
-  export function renderProjects(project, containerElement, headingLevel = 'h2') {
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+    // Validate the container element
     if (!(containerElement instanceof HTMLElement)) {
-      console.error('Error: containerElement is not a valid HTML element.');
+      console.error('Invalid containerElement provided to renderProjects');
       return;
     }
+  
+    // Validate the heading level to be h1 through h6 only
+    const validHeadings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    const headingTag = validHeadings.includes(headingLevel.toLowerCase()) ? headingLevel.toLowerCase() : 'h2';
+  
+    // Clear existing content
     containerElement.innerHTML = '';
-    const article = document.createElement('article');
-    const headingTag = document.createElement(headingLevel);
-    headingTag.textContent = project.title;
   
-    article.appendChild(headingTag);
-  
-    if (project.image) {
-      const img = document.createElement('img');
-      img.src = project.image;
-      img.alt = project.title || 'Project Image';
-      article.appendChild(img);
+    // Handle empty project array
+    if (!Array.isArray(projects) || projects.length === 0) {
+      containerElement.innerHTML = '<p>No projects available at the moment. Check back later!</p>';
+      return;
     }
   
-    const description = document.createElement('p');
-    description.textContent = project.description || 'No description provided.';
-    article.appendChild(description);
+    // Loop through projects and render each one
+    projects.forEach(project => {
+      const article = document.createElement('article');
   
-    containerElement.appendChild(article);
+      // Create elements dynamically
+      const heading = document.createElement(headingTag);
+      heading.textContent = project.title || 'Untitled Project';
+  
+      const img = document.createElement('img');
+      img.src = project.image || 'https://via.placeholder.com/150';
+      img.alt = project.title || 'Project image';
+  
+      const desc = document.createElement('p');
+      desc.textContent = project.description || 'No description provided.';
+  
+      // Append elements to the article
+      article.appendChild(heading);
+      article.appendChild(img);
+      article.appendChild(desc);
+  
+      // Append article to the container
+      containerElement.appendChild(article);
+    });
   }
