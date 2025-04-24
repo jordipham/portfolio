@@ -289,3 +289,40 @@ h1, h2, h3, h4, h5, h6 {
     color: #171717; /* Dark gray */
   }
 }
+
+/* Adding some alignment modifications to my homepage */
+.homepage-section {
+  display: flex; /* Enable flexbox for layout */
+  align-items: stretch; /* Make items the same height as the tallest item */
+  gap: 20px; /* Add some space between the text and the image */
+  margin-bottom: 30px; /* Add some space below this section */
+}
+
+.homepage-text {
+  flex: 1; /* Allow the text to take up remaining space */
+  padding: 20px; /* Add some padding around the text */
+  border: 1px solid #ccc; /* Optional: Add a border for the "boxy" look */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  background-color: #f9f9f9; /* Optional: Add a background color */
+}
+
+.homepage-image {
+  display: flex; /* Enable flexbox on the image container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-shrink: 0;
+  width: 300px;
+  height: auto; /* Or a fixed height if you are using that */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.homepage-image img {
+  display: block;
+  max-width: 100%; /* Ensure image doesn't exceed container width */
+  max-height: 100%; /* Ensure image doesn't exceed container height */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Scale image down to fit within the container */
+}
