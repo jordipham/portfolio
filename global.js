@@ -114,3 +114,46 @@ document.addEventListener('DOMContentLoaded', function() {
         location.href = url; // Using location.href as in the directions
     });
 });
+
+// Step 1.2 for Lab 4
+export async function fetchJSON(url) {
+    try {
+      // Fetch the JSON file from the given URL
+      const response = await fetch(url);
+    //   console.log(response) // debug purposes
+      if (!response.ok) {
+        throw new Error(`Failed to fetch projects: ${response.statusText}`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching or parsing JSON data:', error);
+    }
+  }
+
+  // Step 1.4 for Lab 4
+  export function renderProjects(project, containerElement, headingLevel = 'h2') {
+    if (!(containerElement instanceof HTMLElement)) {
+      console.error('Error: containerElement is not a valid HTML element.');
+      return;
+    }
+    containerElement.innerHTML = '';
+    const article = document.createElement('article');
+    const headingTag = document.createElement(headingLevel);
+    headingTag.textContent = project.title;
+  
+    article.appendChild(headingTag);
+  
+    if (project.image) {
+      const img = document.createElement('img');
+      img.src = project.image;
+      img.alt = project.title || 'Project Image';
+      article.appendChild(img);
+    }
+  
+    const description = document.createElement('p');
+    description.textContent = project.description || 'No description provided.';
+    article.appendChild(description);
+  
+    containerElement.appendChild(article);
+  }
