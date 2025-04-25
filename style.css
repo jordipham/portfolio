@@ -349,9 +349,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 10px 20px; /* Row gap and column gap */
 }
 
-/* .stat-item {
-  
-} */
+/* .stat-item {} */
 
 .stat-label {
   font-size: 1em;
