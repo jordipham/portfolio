@@ -303,7 +303,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 20px; /* Add some padding around the text */
   border: 1px solid #ccc; /* Optional: Add a border for the "boxy" look */
   border-radius: 5px; /* Optional: Add rounded corners */
-  background-color: #f9f9f9; /* Optional: Add a background color */
+  /* background-color: #f9f9f9; */
 }
 
 .homepage-image {
@@ -316,7 +316,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 .homepage-image img {
