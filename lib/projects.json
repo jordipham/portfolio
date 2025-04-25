@@ -8,7 +8,7 @@
     {
         "title": "Visualization of Grocery Products Data",
         "year": "2025",
-        "image": "../images/DSC106-PROJ01-Pham_Jordi_FINAL-images-0.jpg",
+        "image": "https://raw.githubusercontent.com/jordipham/portfolio/refs/heads/main/images/DSC106-PROJ01-Pham_Jordi_FINAL-images-0.jpg",
         "description": "Developed a data visualization of grocery products to portray the \"organicness\" (NOVA classifications) of various grocery stores' selections"
     },
     {
@@ -38,7 +38,7 @@
     {
         "title": "NGramLM",
         "year": "2025",
-        "image": "https://www.nagarro.com/hubfs/Understanding%20foundation%20models.png",
+        "image": "https://cdn.mos.cms.futurecdn.net/CVpCg38vUuL7esCXACKqx6-1200-80.jpg",
         "description": "Trained three different language models - uniform, unigram, and ngram - to generate new text off of previous training text and establish an understanding of what goes under the hood when training language models"
     },
     {
