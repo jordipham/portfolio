@@ -80,6 +80,12 @@ const themeSelect = document.querySelector('#theme-select');
 function setColorScheme(scheme) {
   document.documentElement.style.setProperty('color-scheme', scheme);
   localStorage.setItem('colorScheme', scheme);
+
+  // ✅ Add this to toggle 'dark' or 'light' class on <html>
+  document.documentElement.classList.remove('light', 'dark');
+  if (scheme === 'light' || scheme === 'dark') {
+    document.documentElement.classList.add(scheme);
+  }
 }
 
 themeSelect.addEventListener('input', function(event) {

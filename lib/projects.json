@@ -6,13 +6,13 @@
         "description": "Functional end-to-end chatbot that gives in-game item suggestions to League of Legends players based on inputted keywords"
     },
     {
-        "title": "Image Processing Program",
-        "year": "2024",
-        "image": "https://codesrevolvewordpress.s3.us-west-2.amazonaws.com/revolveai/2023/03/31101928/image-processing-techniques.png",
-        "description": "A series of Python methods that can access individual pixels within an image and modify accordingly i.e. rotate 180 degrees, blur appearance, adjust brightness, etc."
+        "title": "Visualization of Grocery Products Data",
+        "year": "2025",
+        "image": "../images/DSC106-PROJ01-Pham_Jordi_FINAL-images-0.jpg",
+        "description": "Developed a data visualization of grocery products to portray the \"organicness\" (NOVA classifications) of various grocery stores' selections"
     },
     {
-        "title": "\"Woking\" With Data: E.D.A. of Food Data",
+        "title": "\"Woking\" With Data: E.D.A. of Food Recipes & Reviews",
         "year": "2025",
         "image": "https://www.georgeinstitute.org/sites/default/files/2020-10/world-food-day-2020.png",
         "description": "Conducted data analysis on food recipes and their respective food reviews to frame a regression problem and train a functional predictive model"
@@ -24,31 +24,31 @@
         "description": "Utilizing user inputs on previous media watched and personal categorical media preferences to recommend what to watch on Netflix"
     },
     {
-        "title": "MTS Transit: E.D.A. of San Diego's Public Transportation",
+        "title": "MTS Transit: E.D.A. of SD's Public Transportation",
         "year": "2025",
         "image": "https://www.sdmts.com/sites/default/files/styles/mts_express/public/nobel_trolley.jpg?itok=XesK_d4k",
         "description": "Utilized the active bus network of San Diego's MTS to trace optimized bus paths, plot wait times, and uncover the Waiting Time Paradox"
     },
     {
-        "title": "Loan Applications: E.D.A. of the LendingClub Financial Platform",
+        "title": "Loan Applications: E.D.A. of the LendingClub's Loans",
         "year": "2025",
         "image": "https://cdn.hswstatic.com/gif/loan-personal.jpg",
         "description": "Accessed parts of LendingClub's humongous dataset of processed loans to identify different Simpson's Paradoxes and understand a lender's decision-making"
     },
     {
-        "title": "NGrams",
+        "title": "NGramLM",
         "year": "2025",
         "image": "https://www.nagarro.com/hubfs/Understanding%20foundation%20models.png",
         "description": "Trained three different language models - uniform, unigram, and ngram - to generate new text off of previous training text and establish an understanding of what goes under the hood when training language models"
     },
     {
-        "title": "Visualization of Grocery Products Data",
-        "year": "2025",
-        "image": "../images/DSC106-PROJ01-Pham_Jordi_FINAL-images-0.jpg",
-        "description": "Developed a data visualization of grocery products to portray the \"organicness\" (NOVA classifications) of various grocery stores' selections"
+        "title": "Image Processing Program",
+        "year": "2024",
+        "image": "https://codesrevolvewordpress.s3.us-west-2.amazonaws.com/revolveai/2023/03/31101928/image-processing-techniques.png",
+        "description": "A series of Python methods that can access individual pixels within an image and modify accordingly i.e. rotate 180 degrees, blur appearance, adjust brightness, etc."
     },
     {
-        "title": "Visualization of Trade Balances in Low Carbon Technology",
+        "title": "Visualization of Trade in Low Carbon Technology",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Mixed deceptive and earnest data visualization tactics to sway viewers towards a specified propostion regarding global trade balances of technology geared for climate change"
     },

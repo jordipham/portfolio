@@ -7,6 +7,71 @@
     <link rel="stylesheet" href="style.css">
     <script type="module" src="global.js"></script>
     <script type="module" src="index.js" defer></script>
+    <!-- <style>
+        /* Basic dropdown styles - you can further customize this in your style.css */
+        .github-stats-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .stats-button {
+            background-color: #f9f9f9; /* Adjust as needed */
+            color: #333; /* Adjust as needed */
+            padding: 10px 15px;
+            border: 1px solid #ccc; /* Adjust as needed */
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .stats-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9; /* Adjust as needed */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 5px;
+        }
+
+        .github-stats-dropdown:hover .stats-content {
+            display: block;
+        }
+
+        .stats-content .github-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Adjusted for dropdown */
+            gap: 10px;
+        }
+
+        .stats-content .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .stats-content .stat-label {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        .stats-content .stat-value {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .stats-content .loading-stats,
+        .stats-content .error {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+        }
+    </style> -->
 </head>
 <body>
     <!-- <nav>
@@ -18,12 +83,12 @@
     </nav> -->
 
     <h1>
-        Jordi Pham
+        Hey There!
     </h1>
     <div class="homepage-section">
         <div class="homepage-text">
             <p>
-                Hi, I'm Jordi. I'm currently a second-year student at the University of California, San Diego (UCSD) majoring in Data Science and minoring in Economics. This portofolio is currently in progress, so check back soon for an updated and completed page.<br><br>
+                Hi, I'm Jordi. I'm a second-year student at the University of California, San Diego (UCSD) majoring in Data Science and minoring in Economics. This portofolio is currently in progress, so check back soon for an updated and completed page.<br><br>
 
                 My main interests lie in the financial sector as I aim to work in private wealth management. In my free time, I love watching F1, basketball, and football along with playing games and watching movies.
             </p>
@@ -37,9 +102,21 @@
     <div class="projects">
     </div>
 
+    <!-- original github stats -->
     <div id="profile-stats">
         <h1>My GitHub Stats</h1>
     </div>
-    
+
+    <!-- potential drop github stats -->
+    <!-- <div id="profile-stats">
+        <h3>My GitHub Stats</h3>
+        <div class="github-stats-dropdown">
+            <button class="stats-button">View Stats</button>
+            <div class="stats-content">
+                <p class="loading-stats">Loading...</p>
+            </div>
+        </div>
+    </div> -->
+
 </body>
 </html>
