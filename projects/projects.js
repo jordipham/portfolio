@@ -29,22 +29,36 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
   }
 })();
 
+
+// working with D3 pie chart - Lab 5
 document.addEventListener('DOMContentLoaded', () => {
-  // Select the SVG element using its ID
+  // Select the SVG element
   const svg = d3.select('#projects-pie-plot');
 
-  // Create the arc generator AND generate the path data in one step
-  const arcPath = d3.arc()
+  // Our data (two slices)
+  let data = [1, 2, 3, 4, 5, 5];
+
+  // Create the pie generator
+  const pieGenerator = d3.pie();
+
+  // Generate the arc data using d3.pie()
+  const arcData = pieGenerator(data);
+
+  // Create the arc generator
+  const arcGenerator = d3.arc()
     .innerRadius(0)
-    .outerRadius(50)({
-      startAngle: 0,
-      endAngle: 2 * Math.PI,
-    });
+    .outerRadius(50);
 
-  // Append the path to the SVG and set its attributes
+// Create a D3 ordinal color scale
+const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
+
+// Generate the paths for each slice
+let arcs = arcData.map((d) => arcGenerator(d));
+
+// Append paths for each slice and use the color scale
+arcs.forEach((arc, idx) => {
   svg.append('path')
-     .attr('d', arcPath)
-     .attr('fill', 'red');
-
-  // static <path> element from your index.html is removed/commented out
+    .attr('d', arc)
+    .attr('fill', colorScale(idx)); // Use the color scale function
+  });
 });
