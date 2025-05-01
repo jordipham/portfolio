@@ -12,7 +12,7 @@
         "description": "Developed a data visualization of grocery products to portray the \"organicness\" (NOVA classifications) of various grocery stores' selections"
     },
     {
-        "title": "\"Woking\" With Data: E.D.A. of Food Recipes & Reviews",
+        "title": "\"Woking\" With Data: EDA of Food Recipes & Reviews",
         "year": "2025",
         "image": "https://www.georgeinstitute.org/sites/default/files/2020-10/world-food-day-2020.png",
         "description": "Conducted data analysis on food recipes and their respective food reviews to frame a regression problem and train a functional predictive model"
@@ -24,13 +24,13 @@
         "description": "Utilizing user inputs for media watch history and personal media preferences to recommend what to watch on Netflix"
     },
     {
-        "title": "MTS Transit: E.D.A. of SD's Public Transportation",
+        "title": "MTS Transit: EDA of SD's Public Transportation",
         "year": "2025",
         "image": "https://www.sdmts.com/sites/default/files/styles/mts_express/public/nobel_trolley.jpg?itok=XesK_d4k",
         "description": "Utilized San Diego's MTS bus network to trace optimized bus paths, plot wait times, and uncover the Waiting Time Paradox"
     },
     {
-        "title": "Loan Applications: E.D.A. of the LendingClub's Loans",
+        "title": "Loan Applications: EDA of the LendingClub's Loans",
         "year": "2025",
         "image": "https://cdn.hswstatic.com/gif/loan-personal.jpg",
         "description": "Accessed the LendingClub's historical dataset of loans to understand Simpson's Paradoxes and lender's decision-making"
