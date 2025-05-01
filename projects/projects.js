@@ -29,7 +29,6 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
   }
 })();
 
-
 // working with D3 pie chart - Lab 5
 document.addEventListener('DOMContentLoaded', () => {
   // Select the SVG element
