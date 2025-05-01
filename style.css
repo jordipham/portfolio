@@ -428,6 +428,7 @@ html.dark h3 {
   border: 1px solid #ccc; /* Optional border */
   padding: 1em; /* Spacing inside the legend */
   margin-top: 2em; /* Spacing above the legend */
+  list-style-type: none; /* Remove bullet points */
 }
 
 .legend-item { /* Class for each <li> */
@@ -442,14 +443,14 @@ html.dark h3 {
   aspect-ratio: 1 / 1; /* Ensure it's a square */
   background-color: var(--color); /* Use the CSS variable set in D3 */
   display: inline-block; /* Allows width and height to be set */
-  border-radius: 0.2em; /* Optional slight rounding */
+  border-radius: 50%; /* Make the swatches circular */
 }
 
+/* Container style for positioning the pie chart and legend */
 .container {
   display: flex;
   align-items: center;
   gap: 2em; /* Adjust the spacing between the pie chart and legend as needed */
-  /* align-items: center; /* Uncomment this if you want to vertically align them in the center */
 }
 
 @media (max-width: 600px) {
@@ -458,3 +459,33 @@ html.dark h3 {
     align-items: stretch;
   }
 }
+
+
+/* more pie chart CSS - lab 5 */
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+path {
+  transition: 300ms;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+}
+
+/* Spacing the search bar a bit */
+.searchBar {
+  margin-bottom: 20px; /* Adjust the value as needed for spacing */
+}
+
+.projects {
+  margin-top: 20px; /* Adjust the value as needed for spacing */
+}
+
