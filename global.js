@@ -178,11 +178,26 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   
       const desc = document.createElement('p');
       desc.textContent = project.description || 'No description provided.';
+
+      // Adding in year element (Lab 5)
+      const yearElement = document.createElement('p'); // Using a <p> tag for the year
+      yearElement.textContent = `Year: ${project.year || 'N/A'}`; 
+      yearElement.classList.add('project-year');
+
+      // Div to wrap year and project desc (Lab 5)
+      const textWrapper = document.createElement('div');
+      textWrapper.classList.add('project-text-content');
+
+      // Adding year and desc to text wrapper (Lab 5)
+      textWrapper.appendChild(desc);
+      textWrapper.appendChild(yearElement);
   
       // Append elements to the article
       article.appendChild(heading);
       article.appendChild(img);
-      article.appendChild(desc);
+      // article.appendChild(desc);
+      // article.appendChild(yearElement);
+      article.appendChild(textWrapper); // contains desc and year
   
       // Append article to the container
       containerElement.appendChild(article);

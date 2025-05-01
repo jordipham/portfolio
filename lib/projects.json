@@ -21,25 +21,25 @@
         "title": "Netflix Show Recommender",
         "year": "2023",
         "image": "https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940",
-        "description": "Utilizing user inputs on previous media watched and personal categorical media preferences to recommend what to watch on Netflix"
+        "description": "Utilizing user inputs for media watch history and personal media preferences to recommend what to watch on Netflix"
     },
     {
         "title": "MTS Transit: E.D.A. of SD's Public Transportation",
         "year": "2025",
         "image": "https://www.sdmts.com/sites/default/files/styles/mts_express/public/nobel_trolley.jpg?itok=XesK_d4k",
-        "description": "Utilized the active bus network of San Diego's MTS to trace optimized bus paths, plot wait times, and uncover the Waiting Time Paradox"
+        "description": "Utilized San Diego's MTS bus network to trace optimized bus paths, plot wait times, and uncover the Waiting Time Paradox"
     },
     {
         "title": "Loan Applications: E.D.A. of the LendingClub's Loans",
         "year": "2025",
         "image": "https://cdn.hswstatic.com/gif/loan-personal.jpg",
-        "description": "Accessed parts of LendingClub's humongous dataset of processed loans to identify different Simpson's Paradoxes and understand a lender's decision-making"
+        "description": "Accessed the LendingClub's historical dataset of loans to understand Simpson's Paradoxes and lender's decision-making"
     },
     {
         "title": "NGramLM",
         "year": "2025",
         "image": "https://cdn.mos.cms.futurecdn.net/CVpCg38vUuL7esCXACKqx6-1200-80.jpg",
-        "description": "Trained three different language models - uniform, unigram, and ngram - to generate new text off of previous training text and establish an understanding of what goes under the hood when training language models"
+        "description": "Trained a uniform, unigram, and ngram language model to generate new text and establish an understanding of the B.T.S. of language models"
     },
     {
         "title": "Image Processing Program",
@@ -49,8 +49,9 @@
     },
     {
         "title": "Visualization of Trade in Low Carbon Technology",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Mixed deceptive and earnest data visualization tactics to sway viewers towards a specified propostion regarding global trade balances of technology geared for climate change"
+        "year": 2025,
+        "image": "https://raw.githubusercontent.com/jordipham/PROJ02-live/e9b8da97a5c2aa3e1f1ef8cdfcf3abbc4e090d29/images/PROJ02%20-%20DSC106%20Data%20Visualization-FOR.svg",
+        "description": "Mixed deceptive and earnest tactics to persuade viewers on a specified propostion regarding global trade balances of technology geared for climate change"
     },
     {
         "title": "DSC106 - PROJ03",

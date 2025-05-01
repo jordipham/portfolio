@@ -107,6 +107,7 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   gap: 1em;
+  align-items: end;
 }
 
 .projects article {
@@ -130,6 +131,19 @@ button {
 
 .projects article p {
   margin: 0;
+  font-size: 1em;
+}
+
+/* Target all elements with the class 'project-year'  (Lab 5) */
+.project-year {
+  /* Add your specific styles here */
+  font-style: italic;
+  font-size: 0.9em; /* Make it slightly smaller */
+  color: #666;     /* Give it a gray color */
+  text-align: left; /* Example: Align it to the right */
+  margin-top: 5px;  /* Add some space above it */
+  font-family: Baskerville, serif; /* Include a generic serif fallback */
+  font-variant-numeric: oldstyle-nums;
 }
 
 /* Resizing headers and fixing line evenness*/
