@@ -443,7 +443,7 @@ html.dark h3 {
   aspect-ratio: 1 / 1; /* Ensure it's a square */
   background-color: var(--color); /* Use the CSS variable set in D3 */
   display: inline-block; /* Allows width and height to be set */
-  border-radius: 50%; /* Make the swatches circular */
+  border-radius: 50%; /* Optional slight rounding */
 }
 
 /* Container style for positioning the pie chart and legend */
@@ -460,26 +460,6 @@ html.dark h3 {
   }
 }
 
-
-/* more pie chart CSS - lab 5 */
-&:has(path:hover) {
-  path:not(:hover) {
-    opacity: 0.5;
-  }
-}
-
-path {
-  transition: 300ms;
-}
-
-.selected {
-  --color: oklch(60% 45% 0) !important;
-
-  &:is(path) {
-    fill: var(--color);
-  }
-}
-
 /* Spacing the search bar a bit */
 .searchBar {
   margin-bottom: 20px; /* Adjust the value as needed for spacing */
@@ -487,5 +467,18 @@ path {
 
 .projects {
   margin-top: 20px; /* Adjust the value as needed for spacing */
+}
+
+/* style for selecting pie slices */
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color); /* Apply the selected color */
+  }
+}
+
+path {
+  cursor: pointer; /* Indicate that the pie slices are clickable */
 }
 

@@ -30,7 +30,7 @@ let selectedIndex = -1; // No slice is selected by default
       let rolledData = d3.rollups(
         projects,
         v => v.length,
-        (d) => String(d.year)
+        (d) => String(d.year) // Ensure the year is a string
       );
 
       // Convert to array of { label, value } objects
@@ -55,61 +55,78 @@ let selectedIndex = -1; // No slice is selected by default
       const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
 
       // Draw pie slices with click selection
-      arcData.forEach((arc, i) => {
-        const path = svg
-          .append('path')
-          .attr('d', arcGenerator(arc))
-          .attr('fill', () => {
-            // Brighten the selected wedge instead of using a fixed color
-            return i === selectedIndex
-              ? d3.color(colorScale(i)).brighter(1.5)
-              : colorScale(i);
-          })
-          .style('cursor', 'pointer')  // Make the pie slice clickable
-          .on('click', () => {
-            // Toggle selectedIndex when a slice is clicked
-            selectedIndex = (selectedIndex === i) ? -1 : i;
-            updatePieChart(projects); // re-render with updated selection
+      svg.selectAll('path')
+        .data(arcData)
+        .enter()
+        .append('path')
+        .attr('d', arcGenerator)
+        .attr('fill', (d, i) => colorScale(i)) // Set initial fill color
+        .style('cursor', 'pointer')
+        .classed('selected', (d, i) => i === selectedIndex)
+        .on('click', (event, d) => {
+          const index = arcData.indexOf(d);
+          selectedIndex = selectedIndex === index ? -1 : index; // Toggle selection
+          updatePieChart(projects); // Re-render with updated selection
 
-            // Add or remove the 'selected' class to the clicked slice
-            path.classed('selected', selectedIndex === i);
-          });
-      });
+          // Update the legend as well!
+          updateLegend(data, selectedIndex);
+        })
+        .on('mouseover', (event, d) => {
+          // Fade out all other slices except the hovered one
+          svg.selectAll('path')
+            .style('opacity', (p, i) => i === arcData.indexOf(d) ? 1 : 0.5);
+        })
+        .on('mouseout', () => {
+          // Reset opacity when mouse leaves the slice
+          svg.selectAll('path')
+            .style('opacity', 1);
+        });
 
       // Update legend
       const legend = d3.select('.legend');
       legend.selectAll('*').remove(); // Clear previous legend
 
-      data.forEach((d, i) => {
-        const displayColor = i === selectedIndex
-          ? d3.color(colorScale(i)).brighter(1.5)
-          : colorScale(i);
+      const legendItems = legend.selectAll('li')
+        .data(data)
+        .enter()
+        .append('li')
+        .attr('class', 'legend-item')
+        .attr('data-index', (d, i) => i)
+        .html((d, i) => `<span class="swatch" style="background-color: ${colorScale(i)}"></span> ${d.label} <em>(${d.value})</em>`)
+        .classed('selected', (d, i) => i === selectedIndex) // Set initial selected class
+        .on('click', function (event, d) {
+          const index = data.findIndex(item => item.label === d.label && item.value === d.value);
+          selectedIndex = selectedIndex === index ? -1 : index; // Toggle selection
+          updatePieChart(projects); // Re-render pie chart with new selection
 
-        const legendItem = legend.append('li')
-          .attr('class', 'legend-item')
-          .attr('data-index', i)  // Store the index for each legend item
-          .html(`<span class="swatch" style="background-color: ${displayColor};"></span> ${d.label} <em>(${d.value})</em>`)
-          .on('click', function () {
-            selectedIndex = selectedIndex === i ? -1 : i;
-            updatePieChart(projects); // Re-render the chart and legend
-          });
+          // Update the legend items to reflect selection
+          updateLegend(data, selectedIndex);
+        });
 
-        // Add the 'selected' class to the legend item if it is the selected one
-        legendItem.classed('selected', i === selectedIndex);
-      });
+      // Function to update the legend based on selectedIndex
+      function updateLegend(data, selectedIndex) {
+        legend.selectAll('li')
+          .classed('selected', (d, idx) => idx === selectedIndex);
+      }
 
-      // Update pie slices and legend dynamically
-      svg.selectAll('path')
-        .attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
-
-      legend.selectAll('li')
-        .attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
+      // Filter the projects based on the selected year
+      if (selectedIndex !== -1) {
+        const selectedYear = String(data[selectedIndex].label); // Ensure selected year is a string
+        const filteredProjects = projects.filter(project => String(project.year) === selectedYear); // Ensure project.year is a string
+        renderProjects(filteredProjects, document.querySelector('.projects'), 'h2');
+        const titleElement = document.querySelector('.projects-title');
+        if (titleElement) titleElement.textContent = `${filteredProjects.length} Projects`;
+      } else {
+        renderProjects(projects, document.querySelector('.projects'), 'h2');
+        const titleElement = document.querySelector('.projects-title');
+        if (titleElement) titleElement.textContent = `${projects.length} Projects`;
+      }
     };
 
     // Initial pie chart render
-    updatePieChart(projects);
+    updatePieChart(allProjects);
 
-    // Set up search input
+    // Set up search input for dynamic filtering of projects
     const searchInput = document.querySelector('.searchBar');
     if (searchInput) {
       searchInput.addEventListener('input', (event) => {
@@ -134,6 +151,7 @@ let selectedIndex = -1; // No slice is selected by default
         updatePieChart(filteredProjects);
       });
     }
+
   } catch (error) {
     console.error('Error loading or rendering projects:', error);
   }
