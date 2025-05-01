@@ -418,3 +418,43 @@ html.dark h3 {
   margin-block: 2em;
   overflow: visible;
 }
+
+/* lab 5 CSS design - legend on projects page */
+.legend {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em; /* Spacing between legend items */
+  border: 1px solid #ccc; /* Optional border */
+  padding: 1em; /* Spacing inside the legend */
+  margin-top: 2em; /* Spacing above the legend */
+}
+
+.legend-item { /* Class for each <li> */
+  display: flex;
+  align-items: center;
+  gap: 0.5em; /* Spacing between swatch and text */
+}
+
+.swatch {
+  width: 1em;
+  height: 1em;
+  aspect-ratio: 1 / 1; /* Ensure it's a square */
+  background-color: var(--color); /* Use the CSS variable set in D3 */
+  display: inline-block; /* Allows width and height to be set */
+  border-radius: 0.2em; /* Optional slight rounding */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 2em; /* Adjust the spacing between the pie chart and legend as needed */
+  /* align-items: center; /* Uncomment this if you want to vertically align them in the center */
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
