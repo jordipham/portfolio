@@ -410,3 +410,11 @@ html.dark h1,
 html.dark h3 {
   color: #f1f1f1;
 }
+
+
+/* lab 5 CSS design - projects page */
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
