@@ -479,6 +479,7 @@ html.dark h3 {
 }
 
 path {
+  transition: 300ms;
   cursor: pointer; /* Indicate that the pie slices are clickable */
 }
 
