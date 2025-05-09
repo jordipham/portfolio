@@ -91,11 +91,26 @@ function renderScatterPlot(data, commits) {
   const xScale = d3
     .scaleTime()
     .domain(d3.extent(commits, (d) => d.datetime))
-    .range([0, width])
+    .range([0, width]) // initial range
     .nice();
 
   const yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
 
+  const margin = { top: 10, right: 10, bottom: 30, left: 40 };
+  const usableArea = {
+    top: margin.top,
+    right: width - margin.right,
+    bottom: height - margin.bottom,
+    left: margin.left,
+    width: width - margin.left - margin.right,
+    height: height - margin.top - margin.bottom,
+  };
+
+  // 🛠 Update scale ranges BEFORE rendering
+  xScale.range([usableArea.left, usableArea.right]);
+  yScale.range([usableArea.bottom, usableArea.top]);
+
+  // Plot dots using updated scales
   const dots = svg.append("g").attr("class", "dots");
 
   dots
@@ -106,6 +121,21 @@ function renderScatterPlot(data, commits) {
     .attr("cy", (d) => yScale(d.hourFrac))
     .attr("r", 5)
     .attr("fill", "steelblue");
+
+  // Add axes after plotting
+  svg
+    .append("g")
+    .attr("transform", `translate(0, ${usableArea.bottom})`)
+    .call(d3.axisBottom(xScale));
+
+  const yAxis = d3
+    .axisLeft(yScale)
+    .tickFormat((d) => String(d % 24).padStart(2, "0") + ":00");
+
+  svg
+    .append("g")
+    .attr("transform", `translate(${usableArea.left}, 0)`)
+    .call(yAxis);
 }
 
 // data from csv
