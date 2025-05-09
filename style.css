@@ -15,56 +15,58 @@ html {
 
 /* Centers the Content, Helps with Zoom/Resizing */
 body {
-    /* Set line height to 1.5 times the font size
+  /* Set line height to 1.5 times the font size
          and use the OS’s UI font as the website font
        */
-    font: 100%/1.5 system-ui;
-    max-width: 100ch; /*helps with content width*/
-    margin-inline: max(1em, (100% - 100ch) / 2); /* helps with L&R margin */
-    accent-color: var(--color-accent); /* Added for Step 2.4 */
-  }
+  font: 100%/1.5 system-ui;
+  max-width: 100ch; /*helps with content width*/
+  margin-inline: max(1em, (100% - 100ch) / 2); /* helps with L&R margin */
+  accent-color: var(--color-accent); /* Added for Step 2.4 */
+}
 
 /* Navigation Menu */
 nav {
-    --border-color: oklch(50% 10% 200 / 40%); /* Defined border color variable */
-    display: flex;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: var(--border-color); /* new color for nav bar that adapts better for light dark modes */
-    margin-bottom: 1em;
-  }
+  --border-color: oklch(50% 10% 200 / 40%); /* Defined border color variable */
+  display: flex;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(
+    --border-color
+  ); /* new color for nav bar that adapts better for light dark modes */
+  margin-bottom: 1em;
+}
 
 nav a {
-    flex: 1;
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-    padding: 0.4em;
-    margin-bottom: 1px;
-  }
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.4em;
+  margin-bottom: 1px;
+}
 
 nav a:hover {
-    border-bottom: 0.4em;
-    border-bottom-color: var(--color-accent);
-    border-bottom-style: solid;
-    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
-    padding-bottom: 0;
-  }
+  border-bottom: 0.4em;
+  border-bottom-color: var(--color-accent);
+  border-bottom-style: solid;
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+  padding-bottom: 0;
+}
 
-nav a.current { 
-    border-bottom: 0.4em solid oklch(80% 3% 200); 
-    padding-bottom: 0.4em; 
-  }
+nav a.current {
+  border-bottom: 0.4em solid oklch(80% 3% 200);
+  padding-bottom: 0.4em;
+}
 
- /* Light Dark Switch */
- .color-scheme {
+/* Light Dark Switch */
+.color-scheme {
   position: absolute; /* Take it out of normal flow */
-  top: 1rem;       /* Adjust vertical position as needed */
-  right: 1rem;      /* Adjust horizontal position as needed */
-  font-size: 80%;   /* Optional: Adjust font size */
-  display: flex;      /* To align label and select horizontally */
+  top: 1rem; /* Adjust vertical position as needed */
+  right: 1rem; /* Adjust horizontal position as needed */
+  font-size: 80%; /* Optional: Adjust font size */
+  display: flex; /* To align label and select horizontally */
   align-items: center; /* Vertically center the label and select */
-  gap: 0.5em;       /* Optional: Space between label and select */
+  gap: 0.5em; /* Optional: Space between label and select */
 }
 
 .color-scheme select {
@@ -139,9 +141,9 @@ button {
   /* Add your specific styles here */
   font-style: italic;
   font-size: 0.9em; /* Make it slightly smaller */
-  color: #666;     /* Give it a gray color */
+  color: #666; /* Give it a gray color */
   text-align: left; /* Example: Align it to the right */
-  margin-top: 5px;  /* Add some space above it */
+  margin-top: 5px; /* Add some space above it */
   font-family: Baskerville, serif; /* Include a generic serif fallback */
   font-variant-numeric: oldstyle-nums;
 }
@@ -151,7 +153,12 @@ h1 {
   font-size: 400%; /* Make the main heading significantly larger */
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.1; /* Improve heading readability with tighter line spacing */
   text-wrap: balance; /* Prevent unevenly short last lines in headings */
 }
@@ -265,13 +272,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Dates in projects section of resume */
 .tech_year {
-    color: #777;
-    font-style: italic;
-    font-size: 16px;
-    margin-bottom: 0.5em;
-    font-weight: normal; /* Set a normal font weight if paragraphs aren't bold */
-    /* Add any other paragraph-specific styles you want here, like line-height, color, etc. */
-    float: right;
+  color: #777;
+  font-style: italic;
+  font-size: 16px;
+  margin-bottom: 0.5em;
+  font-weight: normal; /* Set a normal font weight if paragraphs aren't bold */
+  /* Add any other paragraph-specific styles you want here, like line-height, color, etc. */
+  float: right;
 }
 
 /* Dealing with links on resume page */
@@ -411,7 +418,6 @@ html.dark h3 {
   color: #f1f1f1;
 }
 
-
 /* lab 5 CSS design - projects page */
 #projects-pie-plot {
   max-width: 20em;
@@ -431,7 +437,8 @@ html.dark h3 {
   list-style-type: none; /* Remove bullet points */
 }
 
-.legend-item { /* Class for each <li> */
+.legend-item {
+  /* Class for each <li> */
   display: flex;
   align-items: center;
   gap: 0.5em; /* Spacing between swatch and text */
@@ -482,4 +489,3 @@ path {
   transition: 300ms;
   cursor: pointer; /* Indicate that the pie slices are clickable */
 }
-

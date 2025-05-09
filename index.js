@@ -1,28 +1,30 @@
 // first three projects to home page
-import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
+import { fetchJSON, renderProjects, fetchGitHubData } from "./global.js";
 
 async function displayLatestProjects() {
-  const projects = await fetchJSON('./lib/projects.json');
+  const projects = await fetchJSON("./lib/projects.json");
   const latestProjects = projects.slice(0, 3);
-  const projectsContainer = document.querySelector('.projects');
+  const projectsContainer = document.querySelector(".projects");
 
   if (latestProjects && Array.isArray(latestProjects) && projectsContainer) {
-    renderProjects(latestProjects, projectsContainer, 'h2');
+    renderProjects(latestProjects, projectsContainer, "h2");
   } else {
-    console.error('Error: Latest project data is not an array or is empty, or container not found.');
+    console.error(
+      "Error: Latest project data is not an array or is empty, or container not found."
+    );
     if (projectsContainer) {
-      projectsContainer.textContent = 'No latest projects available.';
+      projectsContainer.textContent = "No latest projects available.";
     }
   }
 }
 
 // github stats OG
 async function displayGithubStats() {
-    const profileStats = document.querySelector('#profile-stats');
-    if (profileStats) {
-      try {
-        const githubData = await fetchGitHubData('jordipham');
-        profileStats.innerHTML = `
+  const profileStats = document.querySelector("#profile-stats");
+  if (profileStats) {
+    try {
+      const githubData = await fetchGitHubData("jordipham");
+      profileStats.innerHTML = `
           <h3>My GitHub Stats</h3>
           <div class="github-stats-grid">
               <div class="stat-item">
@@ -43,15 +45,15 @@ async function displayGithubStats() {
               </div>
           </div>
         `;
-      } catch (error) {
-        console.error('Error fetching GitHub data:', error);
-        profileStats.innerHTML = `
+    } catch (error) {
+      console.error("Error fetching GitHub data:", error);
+      profileStats.innerHTML = `
           <h3>My GitHub Stats</h3>
           <p class="error">Failed to load GitHub stats.</p>
         `;
-      }
     }
   }
+}
 
 // tester div dropdown for github stats
 // async function displayGithubStats() {
@@ -88,6 +90,5 @@ async function displayGithubStats() {
 //     }
 // }
 
-
-  displayLatestProjects();
-  displayGithubStats();
+displayLatestProjects();
+displayGithubStats();
