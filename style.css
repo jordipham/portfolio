@@ -500,7 +500,12 @@ path {
 
 .summary-stats-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  grid-template-rows: repeat(2, auto); /* 2 rows, auto height */
   gap: 10px 20px;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 

@@ -46,45 +46,106 @@ function processCommits(data) {
 }
 
 // rendering the commits onto the page
-function renderCommitInfo(commits, numFiles, totalLoc, maxDepth, maxLinesInFile, productiveTime) {
-    const statsContainer = d3.select('#stats').append('div').attr('class', 'summary-stats-grid'); // Added 'grid-stats' class
-  
-    const statPairs = [
-      { label: 'COMMITS', value: commits.length },
-      { label: 'FILES', value: numFiles },
-      { label: 'TOTAL LOC', value: totalLoc },
-      { label: 'MAX DEPTH', value: maxDepth },
-      { label: 'MAX LINES', value: maxLinesInFile },
-      { label: 'PRODUCTIVE TIME', value: productiveTime}
-    ];
-  
-    statPairs.forEach(stat => {
-      const statDiv = statsContainer.append('div').attr('class', 'stat-item'); // Changed class name
-      statDiv.append('div').attr('class', 'stat-label').text(stat.label);
-      statDiv.append('div').attr('class', 'stat-value').text(stat.value);
-    });
+function renderCommitInfo(
+  commits,
+  numFiles,
+  totalLoc,
+  maxDepth,
+  maxLinesInFile,
+  mostActiveTimeOfDay,
+  mostActiveDayOfWeek,
+  daysWorked
+) {
+  const statsContainer = d3
+    .select("#stats")
+    .append("div")
+    .attr("class", "summary-stats-grid");
+
+  const statPairs = [
+    { label: "COMMITS", value: commits.length },
+    { label: "FILES", value: numFiles },
+    { label: "TOTAL LOC", value: totalLoc },
+    { label: "MAX DEPTH", value: maxDepth },
+    { label: "MAX LINES", value: maxLinesInFile },
+    { label: "PRODUCTIVE TIME", value: mostActiveTimeOfDay },
+    { label: "PRODUCTIVE DAY", value: mostActiveDayOfWeek },
+    { label: "DAYS WORKED", value: daysWorked },
+  ];
+
+  statPairs.forEach((stat) => {
+    const statDiv = statsContainer.append("div").attr("class", "stat-item"); // Changed class name
+    statDiv.append("div").attr("class", "stat-label").text(stat.label);
+    statDiv.append("div").attr("class", "stat-value").text(stat.value);
+  });
+}
+
+// data from csv
+let data = await loadData();
+
+// commits viewer
+let commits = processCommits(data);
+
+// calculate stats and render appropriately
+const numFiles = d3.rollup(
+  data,
+  (v) => v.length,
+  (d) => d.file
+).size;
+const maxDepth = d3.max(data, (d) => d.depth);
+const files = d3.groups(data, (d) => d.file);
+const maxLinesInFile = d3.max(files, (file) => file[1].length);
+const timeOfDayCounts = d3.rollup(
+  commits,
+  (v) => v.length,
+  (d) => {
+    const hour = d.datetime.getHours();
+    if (hour >= 6 && hour < 12) return "Morning";
+    if (hour >= 12 && hour < 18) return "Afternoon";
+    if (hour >= 18 && hour < 24) return "Evening";
+    return "Night";
   }
-  
-  // data from csv
-  let data = await loadData();
-  
-  // commits viewer
-  let commits = processCommits(data);
-  
-  // calculate stats and render appropriately
-  const numFiles = d3.rollup(data, v => v.length, d => d.file).size;
-  const maxDepth = d3.max(data, d => d.depth);
-  const files = d3.groups(data, d => d.file);
-  const maxLinesInFile = d3.max(files, file => file[1].length);
-  const workByPeriod = d3.rollups(
-    data,
-    (v) => v.length,
-    (d) => {
-      const period = new Date(d.datetime).toLocaleString('en', { dayPeriod: 'short' });
-      // Extract the word before "in the"
-      return period.startsWith('in the ') ? period.slice(7) : period;
-    }
-  );
-  const maxPeriod = d3.greatest(workByPeriod, (d) => d[1])?.[0];
-  
-  renderCommitInfo(commits, numFiles, data.length, maxDepth, maxLinesInFile, maxPeriod);
+);
+const mostActiveTimeOfDay = d3.greatest(
+  timeOfDayCounts,
+  ([key, value]) => value
+)?.[0];
+
+const dayOfWeekCounts = d3.rollup(
+  commits,
+  (v) => v.length,
+  (d) => d.datetime.getDay()
+); // 0=Sun, 1=Mon, ...
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const mostActiveDayOfWeekIndex = d3.greatest(
+  dayOfWeekCounts,
+  ([key, value]) => value
+)?.[0];
+const mostActiveDayOfWeek =
+  mostActiveDayOfWeekIndex !== undefined
+    ? days[mostActiveDayOfWeekIndex]
+    : undefined;
+const workDates = new Set();
+for (const row of data) {
+  const dateStr = row.date.toISOString().split('T')[0]; // get 'YYYY-MM-DD'
+  workDates.add(dateStr);
+}
+const daysWorked = workDates.size;
+
+renderCommitInfo(
+  commits,
+  numFiles,
+  data.length,
+  maxDepth,
+  maxLinesInFile,
+  mostActiveTimeOfDay,
+  mostActiveDayOfWeek,
+  daysWorked
+);
