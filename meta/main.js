@@ -79,13 +79,42 @@ function renderCommitInfo(
   });
 }
 
+// rendering for a scatterplot
+function renderScatterPlot(data, commits) {
+  const width = 1000;
+  const height = 600;
+  const svg = d3
+    .select("#chart")
+    .append("svg")
+    .attr("viewBox", `0 0 ${width} ${height}`)
+    .style("overflow", "visible");
+  const xScale = d3
+    .scaleTime()
+    .domain(d3.extent(commits, (d) => d.datetime))
+    .range([0, width])
+    .nice();
+
+  const yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
+
+  const dots = svg.append("g").attr("class", "dots");
+
+  dots
+    .selectAll("circle")
+    .data(commits)
+    .join("circle")
+    .attr("cx", (d) => xScale(d.datetime))
+    .attr("cy", (d) => yScale(d.hourFrac))
+    .attr("r", 5)
+    .attr("fill", "steelblue");
+}
+
 // data from csv
 let data = await loadData();
 
 // commits viewer
 let commits = processCommits(data);
 
-// calculate stats and render appropriately
+// calculate stats and render appropriately for the stats bar
 const numFiles = d3.rollup(
   data,
   (v) => v.length,
@@ -134,7 +163,7 @@ const mostActiveDayOfWeek =
     : undefined;
 const workDates = new Set();
 for (const row of data) {
-  const dateStr = row.date.toISOString().split('T')[0]; // get 'YYYY-MM-DD'
+  const dateStr = row.date.toISOString().split("T")[0]; // get 'YYYY-MM-DD'
   workDates.add(dateStr);
 }
 const daysWorked = workDates.size;
@@ -149,3 +178,5 @@ renderCommitInfo(
   mostActiveDayOfWeek,
   daysWorked
 );
+
+renderScatterPlot(data, commits);
