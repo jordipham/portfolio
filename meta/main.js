@@ -45,10 +45,46 @@ function processCommits(data) {
     });
 }
 
-// data from csv
-let data = await loadData();
-//   console.log(data)
-
-// commits viewer
-let commits = processCommits(data);
-//   console.log(commits)
+// rendering the commits onto the page
+function renderCommitInfo(commits, numFiles, totalLoc, maxDepth, maxLinesInFile, productiveTime) {
+    const statsContainer = d3.select('#stats').append('div').attr('class', 'summary-stats-grid'); // Added 'grid-stats' class
+  
+    const statPairs = [
+      { label: 'COMMITS', value: commits.length },
+      { label: 'FILES', value: numFiles },
+      { label: 'TOTAL LOC', value: totalLoc },
+      { label: 'MAX DEPTH', value: maxDepth },
+      { label: 'MAX LINES', value: maxLinesInFile },
+      { label: 'PRODUCTIVE TIME', value: productiveTime}
+    ];
+  
+    statPairs.forEach(stat => {
+      const statDiv = statsContainer.append('div').attr('class', 'stat-item'); // Changed class name
+      statDiv.append('div').attr('class', 'stat-label').text(stat.label);
+      statDiv.append('div').attr('class', 'stat-value').text(stat.value);
+    });
+  }
+  
+  // data from csv
+  let data = await loadData();
+  
+  // commits viewer
+  let commits = processCommits(data);
+  
+  // calculate stats and render appropriately
+  const numFiles = d3.rollup(data, v => v.length, d => d.file).size;
+  const maxDepth = d3.max(data, d => d.depth);
+  const files = d3.groups(data, d => d.file);
+  const maxLinesInFile = d3.max(files, file => file[1].length);
+  const workByPeriod = d3.rollups(
+    data,
+    (v) => v.length,
+    (d) => {
+      const period = new Date(d.datetime).toLocaleString('en', { dayPeriod: 'short' });
+      // Extract the word before "in the"
+      return period.startsWith('in the ') ? period.slice(7) : period;
+    }
+  );
+  const maxPeriod = d3.greatest(workByPeriod, (d) => d[1])?.[0];
+  
+  renderCommitInfo(commits, numFiles, data.length, maxDepth, maxLinesInFile, maxPeriod);

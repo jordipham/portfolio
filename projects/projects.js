@@ -94,9 +94,7 @@ let selectedIndex = -1; // No slice is selected by default
         .attr("data-index", (d, i) => i)
         .html(
           (d, i) =>
-            `<span class="swatch" style="background-color: ${colorScale(
-              i
-            )}"></span> ${d.label} <em>(${d.value})</em>`
+            `<span class="swatch" style="background-color: ${colorScale(i)}"></span> ${d.label} <em>(${d.value})</em>`
         )
         .classed("selected", (d, i) => i === selectedIndex) // Set initial selected class
         .on("click", function (event, d) {

@@ -489,3 +489,18 @@ path {
   transition: 300ms;
   cursor: pointer; /* Indicate that the pie slices are clickable */
 }
+
+/* styling for meta stats page */
+#stats h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.45em;
+  color: #333; /* Light mode text color */
+}
+
+.summary-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px 20px;
+}
+
