@@ -106,7 +106,7 @@ let selectedIndex = -1; // No slice is selected by default
       // Function to update the legend based on selectedIndex
       function updateLegend(data, selectedIndex) {
         legend.selectAll('li')
-          .classed('selected', (d, idx) => idx === selectedIndex);
+          .attr('class', (_, i) => (i===selectedIndex? 'selected': ''));
       }
 
       // Filter the projects based on the selected year
