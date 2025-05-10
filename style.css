@@ -509,3 +509,13 @@ path {
   background-color: #f9f9f9;
 }
 
+/* styling for the commits by day chart */
+#chart {
+  margin-top: -150px;
+}
+
+.gridlines line {
+  stroke: #e0e0e0; /* A light gray color */
+  stroke-width: 1px; /* Or a thinner value if needed */
+  opacity: 0.7; /* Adjust the opacity to make them more subtle */
+}

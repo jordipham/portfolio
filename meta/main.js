@@ -132,10 +132,48 @@ function renderScatterPlot(data, commits) {
     .axisLeft(yScale)
     .tickFormat((d) => String(d % 24).padStart(2, "0") + ":00");
 
+  // for grid lines to have time based color
+  //   const gridlineLines = svg
+  //     .append("g")
+  //     .attr("class", "custom-gridlines")
+  //     .attr("transform", `translate(${usableArea.left}, 0)`);
+
+  //   // Get tick values from the yScale (for lines at each hour)
+  //   const yTickValues = yScale.ticks();
+
+  //   // Create a color scale that maps 0–24 hours to colors
+  //   const timeColorScale = d3
+  //     .scaleLinear()
+  //     .domain([0, 12, 24]) // midnight → noon → midnight
+  //     .range(["#377eb8", "#ff7f00", "#377eb8"]);
+
+  //   gridlineLines
+  //     .selectAll("line")
+  //     .data(yTickValues)
+  //     .join("line")
+  //     .attr("x1", 0)
+  //     .attr("x2", usableArea.width)
+  //     .attr("y1", (d) => yScale(d))
+  //     .attr("y2", (d) => yScale(d))
+  //     .attr("stroke", (d) => timeColorScale(d))
+  //     .attr("stroke-width", 1)
+  //     .attr("opacity", 0.4); // softer appearance
+
   svg
     .append("g")
     .attr("transform", `translate(${usableArea.left}, 0)`)
     .call(yAxis);
+
+  // Add gridlines BEFORE the axes - no color
+  const gridlines = svg
+    .append("g")
+    .attr("class", "gridlines")
+    .attr("transform", `translate(${usableArea.left}, 0)`);
+
+  // Create gridlines as an axis with no labels and full-width ticks
+  gridlines.call(
+    d3.axisLeft(yScale).tickFormat("").tickSize(-usableArea.width)
+  );
 }
 
 // data from csv
