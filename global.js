@@ -187,10 +187,10 @@ export function renderProjects(
     const desc = document.createElement("p");
     desc.textContent = project.description || "No description provided.";
 
-    const link = document.createElement("a");
-    link.href = project.link || "#";
-    link.textContent = project.linktext || "N/A";
-    link.target = "_blank"; // Open in a new tab
+    // const link = document.createElement("a");
+    // link.href = project.link || "#";
+    // link.textContent = project.linktext || "N/A";
+    // link.target = "_blank"; // Open in a new tab
 
     // Adding in year element (Lab 5)
     const yearElement = document.createElement("p"); // Using a <p> tag for the year
@@ -203,7 +203,16 @@ export function renderProjects(
 
     // Adding year and desc to text wrapper (Lab 5)
     textWrapper.appendChild(desc);
-    textWrapper.appendChild(link);
+
+    // Only create link if project.link is not blank and then add to text wrapper
+    if (project.link && project.link.trim() !== "") {
+      const link = document.createElement("a");
+      link.href = project.link;
+      link.textContent = project.linktext || "View Project";
+      link.target = "_blank"; // Open in a new tab
+      textWrapper.appendChild(link);
+    }
+
     textWrapper.appendChild(yearElement);
 
     // Append elements to the article

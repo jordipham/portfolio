@@ -1,11 +1,11 @@
 [
   {
-    "title": "League of Legends Chatbot",
-    "link": "",
-    "linktext": "",
-    "year": "2023",
-    "image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/565197caf987af4e4da307df6e2b235a28714736-837x469.jpg?w=1200&h=630&fm=webp&fit=crop&crop=center",
-    "description": "Functional end-to-end chatbot that gives in-game item suggestions to League of Legends players based on inputted keywords"
+    "title": "Visualization of Bostonian Biking Traffic",
+    "link": "https://jordipham.github.io/TourDeData/",
+    "linktext": "View work",
+    "year": "2025",
+    "image": "https://raw.githubusercontent.com/jordipham/portfolio/refs/heads/main/images/MapBox-BostonInteractive.png",
+    "description": "Employed MapBox and D3 to create an interactive, dynamic map of Boston's biking traffic to visualize its arrivals and departures throughout a 24-hour period"
   },
   {
     "title": "Visualization of Grocery Products Data",
@@ -72,12 +72,12 @@
     "description": "Mixed deceptive and earnest tactics to persuade viewers on a specified propostion regarding global trade balances of technology geared for climate change"
   },
   {
-    "title": "Visualization of Bostonian Biking Traffic",
-    "link": "https://jordipham.github.io/TourDeData/",
-    "linktext": "View work",
-    "year": "2025",
-    "image": "https://raw.githubusercontent.com/jordipham/portfolio/refs/heads/main/images/MapBox-BostonInteractive.png",
-    "description": "Employed MapBox and D3 to create an interactive, dynamic map of Boston's biking traffic to visualize its arrivals and departures throughout a 24-hour period"
+    "title": "League of Legends Chatbot",
+    "link": "",
+    "linktext": "",
+    "year": "2023",
+    "image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/565197caf987af4e4da307df6e2b235a28714736-837x469.jpg?w=1200&h=630&fm=webp&fit=crop&crop=center",
+    "description": "Functional end-to-end chatbot that gives in-game item suggestions to League of Legends players based on inputted keywords"
   },
   {
     "title": "DSC106 - PROJ04",
