@@ -150,7 +150,7 @@ button {
 
 /* Resizing headers and fixing line evenness*/
 h1 {
-  font-size: 400%; /* Make the main heading significantly larger */
+  font-size: 370%; /* Make the main heading significantly larger */
 }
 
 h1,
@@ -315,14 +315,14 @@ h6 {
 .homepage-section {
   display: flex; /* Enable flexbox for layout */
   align-items: stretch; /* Make items the same height as the tallest item */
-  gap: 10px; /* Add some space between the text and the image */
+  gap: 5px; /* Add some space between the text and the image */
   margin-bottom: 30px; /* Add some space below this section */
 }
 
 .homepage-text {
   flex: 1; /* Allow the text to take up remaining space */
-  padding: 20px; /* Add some padding around the text */
-  border: 1px solid #ccc; /* Optional: Add a border for the "boxy" look */
+  padding: 0px; /* Add some padding around the text */
+  border: 0px solid #ccc; /* Optional: Add a border for the "boxy" look */
   border-radius: 5px; /* Optional: Add rounded corners */
   /* background-color: #f9f9f9; */
 }
@@ -334,8 +334,8 @@ h6 {
   flex-shrink: 0;
   width: 300px;
   height: auto; /* Or a fixed height if you are using that */
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 0px;
+  border: 0px solid #ccc;
   border-radius: 5px;
   /* background-color: #fff; */
 }

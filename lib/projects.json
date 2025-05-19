@@ -2,15 +2,15 @@
   {
     "title": "Visualization of Bostonian Biking Traffic",
     "link": "https://jordipham.github.io/TourDeData/",
-    "linktext": "View work",
+    "linktext": "View Work",
     "year": "2025",
     "image": "https://raw.githubusercontent.com/jordipham/portfolio/refs/heads/main/images/MapBox-BostonInteractive.png",
     "description": "Employed MapBox and D3 to create an interactive, dynamic map of Boston's biking traffic to visualize its arrivals and departures throughout a 24-hour period"
   },
   {
     "title": "Visualization of Grocery Products Data",
-    "link": "",
-    "linktext": "",
+    "link": "https://docs.google.com/presentation/d/11cm5Gd3MOuNo-rbKg76g-S8XMb7f3BJXEjMd7BZZpgs/present?slide=id.p",
+    "linktext": "View Work",
     "year": "2025",
     "image": "https://raw.githubusercontent.com/jordipham/portfolio/refs/heads/main/images/DSC106-PROJ01-Pham_Jordi_FINAL-images-0.jpg",
     "description": "Developed a data visualization of grocery products to portray the \"organicness\" (NOVA classifications) of various grocery stores' selections (visualization was placed in the top 3% of a 180-student class)"
@@ -65,8 +65,8 @@
   },
   {
     "title": "Visualization of Trade in Low Carbon Technology",
-    "link": "",
-    "linktext": "",
+    "link": "https://jordipham.github.io/PROJ02-live/",
+    "linktext": "View Work",
     "year": 2025,
     "image": "https://raw.githubusercontent.com/jordipham/PROJ02-live/e9b8da97a5c2aa3e1f1ef8cdfcf3abbc4e090d29/images/PROJ02%20-%20DSC106%20Data%20Visualization-FOR.svg",
     "description": "Mixed deceptive and earnest tactics to persuade viewers on a specified propostion regarding global trade balances of technology geared for climate change"

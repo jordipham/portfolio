@@ -216,8 +216,8 @@ export function renderProjects(
     textWrapper.appendChild(yearElement);
 
     // Append elements to the article
-    article.appendChild(heading);
     article.appendChild(img);
+    article.appendChild(heading);
     // article.appendChild(desc);
     // article.appendChild(yearElement);
     article.appendChild(textWrapper); // contains desc and year
