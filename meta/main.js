@@ -222,7 +222,8 @@ function updateScatterPlot(data, commits) {
     .duration(500)
     .attr("cx", (d) => xScale(d.datetime))
     .attr("cy", (d) => yScale(d.hourFrac))
-    .attr("r", (d) => rScale(d.totalLines));
+    .attr("r", (d) => rScale(d.totalLines))
+    .style("--r", (d) => rScale(d.totalLines));
 }
 
 // -----------------
