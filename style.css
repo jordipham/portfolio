@@ -393,11 +393,11 @@ h6 {
   }
 
   .stat-label {
-    color: #aaa; 
+    color: #aaa;
   }
 
   .stat-value {
-    color: #fff; 
+    color: #fff;
   }
 } */
 
@@ -643,9 +643,9 @@ circle.selected {
 }
 
 .loc {
-  display: flex; /* Added for unit visualization */
-  width: 0.5em; /* Added for unit visualization */
-  aspect-ratio: 1; /* Added for unit visualization */
-  background: steelblue; /* Added for unit visualization */
-  border-radius: 50%; /* Added for unit visualization */
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: var(--color); /* Modified to use the CSS variable */
+  border-radius: 50%;
 }

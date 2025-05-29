@@ -10,6 +10,7 @@ let yScale = d3.scaleLinear().domain([0, 24]);
 let commitProgress = 100;
 let timeScale;
 let commitMaxTime;
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 // -----------------
 // Data Loading and Processing
@@ -168,7 +169,8 @@ function updateFileDisplay(filteredCommits) {
     .selectAll("div")
     .data((d) => d.lines)
     .join("div")
-    .attr("class", "loc");
+    .attr("class", "loc")
+    .attr("style", (d) => `--color: ${colors(d.type)}`);
 }
 
 function renderCommitInfo(
