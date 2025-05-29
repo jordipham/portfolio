@@ -551,6 +551,15 @@ dl.info dd {
   pointer-events: none; /* so it doesn’t interfere with mouse events */
   font-size: 0.9rem;
   line-height: 1.4;
+  z-index: 1000; /* Added: Ensures the tooltip appears on top of other content */
+}
+
+/* This rule makes the tooltip invisible and not clickable when hidden.
+   It works in conjunction with the JS updateTooltipVisibility(false)
+   which will set the 'hidden' attribute on the dl element. */
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
 }
 
 circle {
