@@ -658,3 +658,24 @@ circle.selected {
   background: var(--color); /* Modified to use the CSS variable */
   border-radius: 50%;
 }
+
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+}
+
+#scrolly-1 > * {
+  flex: 1;
+}
+
+#scatter-story {
+  position: relative;
+}
+
+#scatter-plot {
+  position: sticky;
+  top: 0;
+  height: 50vh;
+}
+

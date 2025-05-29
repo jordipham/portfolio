@@ -1,4 +1,4 @@
-<!-- meta data page -->
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,7 +12,6 @@
     <h1>Meta</h1>
     <p>Let's look at some of the statistics of this website!</p>
 
-    <!-- slider to filter up to a specified date -->
     <style>
       .commit-slider-row {
         display: flex;
@@ -44,34 +43,36 @@
       <time id="commit-time"></time>
     </div>
 
-    <!-- summary stats menu -->
     <div id="stats">
       <h2>Summary Stats</h2>
     </div>
 
     <h2>Commits by time of day</h2>
 
-    <!-- scatter plot with tooltip -->
-    <div id="chart"></div>
+    <div id="scrolly-1">
+      <div id="scatter-story">
+        <p>Some filler text here</p>
+      </div>
 
-    <dl id="commit-tooltip" class="info tooltip">
-      <dt>Commit</dt>
-      <dd>
-        <a href="" id="commit-link" target="_blank"></a>
-      </dd>
+      <div id="scatter-plot">
+        <div id="chart"></div>
 
-      <dt>Date</dt>
-      <dd id="commit-date"></dd>
+        <dl id="commit-tooltip" class="info tooltip">
+          <dt>Commit</dt>
+          <dd>
+            <a href="" id="commit-link" target="_blank"></a>
+          </dd>
+          <dt>Date</dt>
+          <dd id="commit-date"></dd>
+        </dl>
 
-      <!-- Add: Time, author, lines edited -->
-    </dl>
+        <dl id="commit-tooltip" class="info tooltip" hidden></dl>
 
-    <dl id="commit-tooltip" class="info tooltip" hidden></dl>
+        <p id="selection-count">No commits selected</p>
+        <dl id="language-breakdown" class="stats"></dl>
+      </div>
+    </div>
 
-    <p id="selection-count">No commits selected</p>
-    <dl id="language-breakdown" class="stats"></dl>
-
-    <!-- shows which files got changed and how -->
     <dl id="files"></dl>
   </body>
 </html>
