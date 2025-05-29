@@ -633,4 +633,19 @@ circle.selected {
 
 #files dd {
   grid-column: 2;
+  display: flex; /* Added for unit visualization */
+  flex-wrap: wrap; /* Added for unit visualization */
+  align-items: start; /* Added for unit visualization */
+  align-content: start; /* Added for unit visualization */
+  gap: 0.15em; /* Added for unit visualization */
+  padding-top: 0.6em; /* Added for unit visualization */
+  margin-left: 0; /* Added for unit visualization */
+}
+
+.loc {
+  display: flex; /* Added for unit visualization */
+  width: 0.5em; /* Added for unit visualization */
+  aspect-ratio: 1; /* Added for unit visualization */
+  background: steelblue; /* Added for unit visualization */
+  border-radius: 50%; /* Added for unit visualization */
 }
