@@ -60,6 +60,105 @@ function processCommits(data) {
 // -----------------
 // Rendering Functions
 // -----------------
+function updateSummaryStats(filteredCommits, filteredData) {
+  // Clear the previous stats grid
+  d3.select("#stats .summary-stats-grid").remove();
+
+  // If there are no commits, do nothing further.
+  if (filteredCommits.length === 0) {
+    return;
+  }
+
+  // Calculate stats based on the filtered data
+  const numFiles = new Set(filteredData.map((d) => d.file)).size;
+  const totalLoc = filteredData.length;
+  const maxDepth = d3.max(filteredData, (d) => d.depth) || 0;
+  const maxLinesInFile =
+    d3.max(
+      d3
+        .rollup(
+          filteredData,
+          (v) => v.length,
+          (d) => d.file
+        )
+        .values()
+    ) || 0;
+  const timeOfDayCounts = d3.rollup(
+    filteredCommits,
+    (v) => v.length,
+    (d) => {
+      const hour = d.datetime.getHours();
+      if (hour >= 6 && hour < 12) return "Morning";
+      if (hour >= 12 && hour < 18) return "Afternoon";
+      if (hour >= 18 && hour < 24) return "Evening";
+      return "Night";
+    }
+  );
+  const mostActiveTimeOfDay = d3.greatest(
+    timeOfDayCounts,
+    ([, value]) => value
+  )?.[0];
+
+  const dayOfWeekCounts = d3.rollup(
+    filteredCommits,
+    (v) => v.length,
+    (d) => d.datetime.getDay()
+  );
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const mostActiveDayOfWeekIndex = d3.greatest(
+    dayOfWeekCounts,
+    ([, value]) => value
+  )?.[0];
+  const mostActiveDayOfWeek = days[mostActiveDayOfWeekIndex];
+  const daysWorked = new Set(
+    filteredData.map((d) => d.date.toISOString().split("T")[0])
+  ).size;
+
+  // Render the new stats
+  renderCommitInfo(
+    filteredCommits,
+    numFiles,
+    totalLoc,
+    maxDepth,
+    maxLinesInFile,
+    mostActiveTimeOfDay,
+    mostActiveDayOfWeek,
+    daysWorked
+  );
+}
+
+function updateFileDisplay(filteredCommits) {
+  let lines = filteredCommits.flatMap((d) => d.lines);
+  let files = d3
+    .groups(lines, (d) => d.file)
+    .map(([name, lines]) => {
+      return { name, lines };
+    });
+
+  let filesContainer = d3
+    .select("#files")
+    .selectAll("div")
+    .data(files, (d) => d.name)
+    .join(
+      // This code only runs when the div is initially rendered
+      (enter) =>
+        enter.append("div").call((div) => {
+          div.append("dt").append("code");
+          div.append("dd");
+        })
+    );
+  // This code updates the div info
+  filesContainer.select("dt > code").text((d) => d.name);
+  filesContainer.select("dd").text((d) => `${d.lines.length} lines`);
+}
 
 function renderCommitInfo(
   commits,
@@ -82,8 +181,8 @@ function renderCommitInfo(
     { label: "TOTAL LOC", value: totalLoc },
     { label: "MAX DEPTH", value: maxDepth },
     { label: "MAX LINES", value: maxLinesInFile },
-    { label: "PRODUCTIVE TIME OF DAY", value: mostActiveTimeOfDay },
-    { label: "PRODUCTIVE DAY OF WEEK", value: mostActiveDayOfWeek },
+    { label: "PRODUCTIVE TIME OF DAY", value: mostActiveTimeOfDay || "N/A" },
+    { label: "PRODUCTIVE DAY OF WEEK", value: mostActiveDayOfWeek || "N/A" },
     { label: "DAYS WORKED ON SITE", value: daysWorked },
   ];
 
@@ -349,7 +448,11 @@ function onTimeSliderChange() {
   });
 
   filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
+  const filteredData = data.filter((d) => d.datetime <= commitMaxTime);
+
   updateScatterPlot(data, filteredCommits);
+  updateFileDisplay(filteredCommits);
+  updateSummaryStats(filteredCommits, filteredData);
 }
 
 // -----------------
@@ -360,69 +463,6 @@ async function main() {
   data = await loadData();
   commits = processCommits(data);
   filteredCommits = commits;
-
-  // Calculate stats
-  const numFiles = new Set(data.map((d) => d.file)).size;
-  const maxDepth = d3.max(data, (d) => d.depth);
-  const maxLinesInFile = d3.max(
-    d3
-      .rollup(
-        data,
-        (v) => v.length,
-        (d) => d.file
-      )
-      .values()
-  );
-  const timeOfDayCounts = d3.rollup(
-    commits,
-    (v) => v.length,
-    (d) => {
-      const hour = d.datetime.getHours();
-      if (hour >= 6 && hour < 12) return "Morning";
-      if (hour >= 12 && hour < 18) return "Afternoon";
-      if (hour >= 18 && hour < 24) return "Evening";
-      return "Night";
-    }
-  );
-  const mostActiveTimeOfDay = d3.greatest(
-    timeOfDayCounts,
-    ([, value]) => value
-  )?.[0];
-
-  const dayOfWeekCounts = d3.rollup(
-    commits,
-    (v) => v.length,
-    (d) => d.datetime.getDay()
-  );
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const mostActiveDayOfWeekIndex = d3.greatest(
-    dayOfWeekCounts,
-    ([, value]) => value
-  )?.[0];
-  const mostActiveDayOfWeek = days[mostActiveDayOfWeekIndex];
-  const daysWorked = new Set(
-    data.map((d) => d.date.toISOString().split("T")[0])
-  ).size;
-
-  // Render initial components
-  renderCommitInfo(
-    commits,
-    numFiles,
-    data.length,
-    maxDepth,
-    maxLinesInFile,
-    mostActiveTimeOfDay,
-    mostActiveDayOfWeek,
-    daysWorked
-  );
 
   timeScale = d3
     .scaleTime()
@@ -436,7 +476,7 @@ async function main() {
     .getElementById("commit-progress")
     .addEventListener("input", onTimeSliderChange);
 
-  // Initial call to set time display
+  // Initial call to set time display and render all components
   onTimeSliderChange();
 }
 

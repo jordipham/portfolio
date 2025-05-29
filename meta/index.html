@@ -12,18 +12,14 @@
     <h1>Meta</h1>
     <p>Let's look at some of the statistics of this website!</p>
 
-    <div id="stats">
-      <h2>Summary Stats</h2>
-    </div>
-
-    <h2>Commits by time of day</h2>
-
+    <!-- slider to filter up to a specified date -->
     <style>
       .commit-slider-row {
         display: flex;
         align-items: center;
         gap: 1rem;
         margin-bottom: 1rem;
+        margin-top: 1rem;
       }
 
       .commit-slider-label {
@@ -48,6 +44,18 @@
       <time id="commit-time"></time>
     </div>
 
+    <!-- shows which files got changed and how -->
+    <dl id="files">
+    </dl>
+
+    <!-- summary stats menu -->
+    <div id="stats">
+      <h2>Summary Stats</h2>
+    </div>
+
+    <h2>Commits by time of day</h2>
+
+    <!-- scatter plot with tooltip -->
     <div id="chart"></div>
 
     <dl id="commit-tooltip" class="info tooltip">
