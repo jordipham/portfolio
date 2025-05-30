@@ -17,8 +17,8 @@
   },
   {
     "title": "\"Woking\" With Data: EDA of Food Recipes & Reviews",
-    "link": "",
-    "linktext": "",
+    "link": "https://kristen-lee-120.github.io/wokingwithdata/",
+    "linktext": "View Work",
     "year": "2025",
     "image": "https://www.georgeinstitute.org/sites/default/files/2020-10/world-food-day-2020.png",
     "description": "Conducted data analysis on food recipes and their respective food reviews to frame a regression problem and train a functional predictive model"
