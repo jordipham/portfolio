@@ -300,7 +300,7 @@ function updateScatterPlot(data, commits) {
 
   const dots = svg.select("g.dots");
   const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
-  const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
+  const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([5, 30]);
   const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
 
   dots

@@ -321,7 +321,7 @@ h6 {
 
 .homepage-text {
   flex: 1; /* Allow the text to take up remaining space */
-  padding: 0px; /* Add some padding around the text */
+  padding: 10px; /* Add some padding around the text */
   border: 0px solid #ccc; /* Optional: Add a border for the "boxy" look */
   border-radius: 5px; /* Optional: Add rounded corners */
   /* background-color: #f9f9f9; */
